@@ -1,0 +1,12 @@
+[
+    {
+      "name": "John Doe",
+      "email": "john.doe@gla.ac.in",
+      "password": "jd123"
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane.smith@gla.ac.in",
+      "password": "js456"
+    }
+  ]

@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.9.0",
+    "bcryptjs": "^3.0.2",
+    "child_process": "^1.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.0",
+    "multer": "^1.4.4",
+    "multer-s3": "^2.10.0",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.10.1",
+    "puppeteer": "^24.7.2",
+    "redis": "^4.7.0",
+    "simple-git": "^3.27.0",
+    "xlsx": "^0.18.5"
+  }
+}
