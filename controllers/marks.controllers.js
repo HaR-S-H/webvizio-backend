@@ -3,7 +3,10 @@ import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import Marks from "../models/marks.models.js";
 const getStudentMarks = asyncHandler(async (req, res) => { 
-    const marks=await Marks.findOne({studentId:req.user._id}).populate("marks.testId","-studentData -studentEmailIds").populate("marks.plagrism.studentId","-password ActiveTests -oldTests -marks")
+    const marks=await Marks.findOne({studentId:req.user._id}).populate("marks.testId","-studentData -studentEmailIds").populate({
+        path: "marks.plagrism.studentId",
+        select: "name email rollNo section" // ✅ consistent inclusion
+      });
      if (!marks) {
          throw new ApiError(404, "Student not found");
      }

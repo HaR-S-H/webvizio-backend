@@ -12,14 +12,13 @@ const getResult = asyncHandler(async (req, res) => {
 
     const result = await Result.findOne({ testId })
     .populate({
-        path: "marks.studentId",
-        select: "-password -ActiveTests -oldTests -marks"
+      path: "marks.studentId",
+      select: "name email rollNo section" // ✅ Include only what's needed
     })
     .populate({
-        path: "marks.plagrism.studentId",
-        select: "-password -ActiveTests -oldTests -marks"
+      path: "marks.plagrism.studentId",
+      select: "name email rollNo section" // ✅ Consistent inclusion
     });
-
 
     if (!result) {
         throw new ApiError(404, "Result not found");

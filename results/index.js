@@ -9,7 +9,7 @@ import Test from "../models/test.models.js";
 import { spawn } from "child_process";
 import Marks from "../models/marks.models.js";
 import Result from "../models/result.models.js"; // Add this import
-
+import { checkPlagiarism } from "../utils/plagiarismChecker.js";
 const __dirname = path.resolve();
 const RESULT_DIR = path.join(__dirname, "results");
 const BASE_DIR = path.join(RESULT_DIR, "projects");
@@ -19,7 +19,7 @@ fs.ensureDirSync(BASE_DIR);
 fs.ensureDirSync(SCREENSHOT_DIR);
 
 const getResult = async (testId, githubLink, studentId) => {
-    const studentFolder = `student_project_${studentId}_${testId}`;
+    const studentFolder = `student_project`;
     const teacherFolder = `teacher_project_${testId}`;
     const studentProjectPath = path.join(BASE_DIR, studentFolder);
     const teacherProjectPath = path.join(BASE_DIR, teacherFolder);
@@ -193,7 +193,12 @@ const getResult = async (testId, githubLink, studentId) => {
             const teacherType = detectProjectType(teacherProjectPath);
             if (teacherType !== "static") await installDependencies(teacherProjectPath);
         }
-
+        const studentCodePath = "C:/Users/h8551/OneDrive/Desktop/webVizio-dev/backend/results/projects/student_project";
+        const plagiarismResult = await checkPlagiarism(studentId, testId, studentCodePath, githubLink);
+        if (plagiarismResult.plagiarised) {
+            console.log(`Plagiarism detected for ${studentId}, skipping UI comparison`);
+            return 0;
+        }
         // --- Run & Capture ---
         await startServer(studentProjectPath, studentType, 5180);
         await startServer(teacherProjectPath, detectProjectType(teacherProjectPath), 5181);
@@ -202,7 +207,7 @@ const getResult = async (testId, githubLink, studentId) => {
         await captureScreenshots("http://localhost:5181", teacherProjectPath, detectProjectType(teacherProjectPath), "teacher");
 
         console.log("Deployment complete!");
-
+        
         // Run comparison script and return the score
         const score = await runComparisonScript();
         return score;
@@ -284,3 +289,12 @@ const getResult = async (testId, githubLink, studentId) => {
 };
 
 export default getResult;
+
+
+
+
+
+
+
+
+

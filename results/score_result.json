@@ -1,19 +1,19 @@
 {
-  "overall_score": 19.98,
+  "overall_score": 88.78,
   "metrics": {
-    "design": 0.0,
-    "structure": 23.64,
-    "accessibility": 60.77,
-    "color": 25.14
+    "design": 75.0,
+    "structure": 97.64,
+    "accessibility": 96.58,
+    "color": 100.0
   },
   "detailed_results": [
     {
       "filename": "screenshot_.png",
-      "design_similarity": 0,
-      "structure_similarity": 23.64,
-      "accessibility_similarity": 60.77,
-      "color_contrast_similarity": 25.14,
-      "final_score": 19.98
+      "design_similarity": 75.0,
+      "structure_similarity": 97.64,
+      "accessibility_similarity": 96.58,
+      "color_contrast_similarity": 100.0,
+      "final_score": 88.78
     }
   ]
 }

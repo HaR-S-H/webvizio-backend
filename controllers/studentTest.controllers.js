@@ -105,7 +105,7 @@ const submitTest = asyncHandler(async (req, res) => {
         studentId: student._id,
         marksObtained: result.marksObtained,
         githubLink,
-        plagiarism: [{
+        plagrism: [{
             detected: !!result.studentId,
             studentId: result.studentId || null
         }]
@@ -116,7 +116,7 @@ const submitTest = asyncHandler(async (req, res) => {
         testId,
         marksObtained: result.marksObtained,
         githubLink,
-        plagiarism: [{
+        plagrism: [{
             detected: !!result.studentId,
             studentId: result.studentId || null
         }]
